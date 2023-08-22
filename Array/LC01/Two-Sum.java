@@ -7,7 +7,7 @@ class Solution {
             result[0] = i;
             for (int j = i + 1; j < nums.length; j++) {
                 if (get == nums[j]) {
-                    result[1] = j;
+                    result[1] = j; 
                     return result;
                 }
             }
