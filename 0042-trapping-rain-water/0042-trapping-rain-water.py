@@ -21,7 +21,7 @@ class Solution:
             else :
                 suffix.append(suffix[-1])
         
-        suffix = list(reversed(suffix))
+        suffix = suffix[::-1]
 
         trapped_water = 0
 
