@@ -2,23 +2,24 @@ class Solution:
     def trap(self, height: List[int]) -> int:
         prefix = []
         suffix = []
-        curr_prefix = 0
-        curr_suffix = 0
         # getting prefix and suffix
         # prefix
         for i in range(len(height)):
-            if height[i] > curr_prefix:
+            if not prefix:
                 prefix.append(height[i])
-                curr_prefix = height[i]
+
+            elif height[i] > prefix[-1]:
+                prefix.append(height[i])
             else :
-                prefix.append(curr_prefix)
+                prefix.append(prefix[-1])
         # suffix
         for i in reversed(range(len(height))):
-            if height[i] > curr_suffix:
+            if not suffix:
                 suffix.append(height[i])
-                curr_suffix = height[i]
+            if height[i] > suffix[-1]:
+                suffix.append(height[i])
             else :
-                suffix.append(curr_suffix)
+                suffix.append(suffix[-1])
         
         suffix = list(reversed(suffix))
 
