@@ -1,10 +1,7 @@
 class Solution:
     def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
-        sorted_position = sorted(enumerate(position), key= lambda x : x[1], reverse= True)
-        sorted_speed = [speed[sorted_position[x][0]] for x in range(len(speed))]
-        sorted_position = [x[1] for x in sorted_position]
-
-        time_needed = [(target - sorted_position[x])/sorted_speed[x] for x in range(len(sorted_position))]
+        pos_speed = sorted([[x,y] for x, y in zip(position, speed)], key= lambda x : x[0], reverse= True)
+        time_needed = [(target - x[0])/x[1] for x in pos_speed]
         cnt = 0
         while time_needed:
             needed = time_needed[0]
